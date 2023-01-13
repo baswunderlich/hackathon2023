@@ -1,6 +1,6 @@
 package hackathon.demo.model;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
     String name;
     int minKapazitaet;
     int minWirkungsgrad;
@@ -59,5 +59,16 @@ public class Customer {
 
     public int getChargingCycles(){
         return chargingCycles;
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        if(this.preisProBatterie > o.preisProBatterie){
+            return 1;
+        }else if(this.preisProBatterie == o.preisProBatterie){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 }

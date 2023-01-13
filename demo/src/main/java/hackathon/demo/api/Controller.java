@@ -13,9 +13,10 @@ import java.io.FileNotFoundException;
 public class Controller {
     @GetMapping("answer")
     public Answer getAnswerForBatteryPass(String pass){
-        if(pass == null){
-            return new Answer("Kein Pass gegeben", 0);
+        try {
+            return Calculator.getAnswerForBatteryPass(pass);
+        } catch (FileNotFoundException e) {
+            return new Answer("Keinen solchen Pass gefunden", -1);
         }
-        return new Answer("Lieblings AG", 10);
     }
 }

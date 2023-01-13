@@ -3,10 +3,7 @@ package hackathon.demo.calculator;
 import hackathon.demo.model.*;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 class Entry{
     public long time;
@@ -52,9 +49,17 @@ public class Calculator {
         }
         var customers = Calculator.getCustomers();
         var history = Calculator.getHistory(battery.getHersteller());
-        var customersViable = new LinkedList<Customer>();
+        var viableCustomers = new LinkedList<Customer>();
 
-        return new Answer("niemand", 0);
+        for(var c : customers){
+            if(wirkungsgradOk(c, history) && kapazitaetOk(c, history)){
+                viableCustomers.add(c);
+            }
+        }
+
+        Collections.sort(viableCustomers);
+
+        return new Answer(viableCustomers.getFirst().getName(), viableCustomers.getFirst().getPreisProBatterie());
     }
 
     private static boolean wirkungsgradOk(Customer customer, List<Knowledge> history){

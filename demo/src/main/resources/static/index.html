@@ -27,30 +27,26 @@
             xhttp.open("GET", url, true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
+            var res = "800"
+            var str = "wir können deine Batterie nicht verwenden"
+            if(res != -1){
+                str = "wir kaufen deine Batterie für " + res
+            }
+            document.getElementById('response').innerHTML = str
         }
-
-        $(function () {
-            $('#button').on('click', function () {
-                $('#response').css("display", "block")
-                var text = $('#text');
-                text.val(text.val() + ' after clicking');
-            });
-        });
     </script>
 </head>
 
 
 <body>
-    <!-- <div class="container-fluid"> -->
         <div class="grid">
             <p>Bitte gib die BatteryPassID ein.</p>
             <input id="input" type="text" placeholder="BatteryPassID">
             <button id="button" style="margin-top: 10px;" onclick="myFunction()">Anfragen</button>
         </div>
         <div class="grid">
-            <p id="response" style="display: none;">wir kaufen deine Batterie für 800€</p>
+            <p id="response"></p>
         </div>
-    <!-- </div> -->
 
 </body>
 

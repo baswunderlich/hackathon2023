@@ -6,6 +6,9 @@ import hackathon.demo.model.Battery;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Calculator {
     public static Answer getAnswerForBatteryPass(String pass) throws FileNotFoundException {
@@ -14,8 +17,6 @@ public class Calculator {
     }
 
     public static Battery getBattery(String pass) throws FileNotFoundException {
-        File f = new File("batteries/" + pass + ".json");
-        FileReader reader = new FileReader(f);
-
+        return new Battery("test", 50, 7000, 2313, new Date());
     }
 }

@@ -2,11 +2,7 @@ package hackathon.demo.calculator;
 
 import hackathon.demo.model.*;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -14,11 +10,13 @@ import java.util.List;
 
 class Entry{
     public long time;
-    public int value;
+    public int wirkungsgrad;
+    public int chargingCycles;
 
-    public Entry(long time, int value) {
+    public Entry(long time, int wirkungsgrad, int chargingCycles) {
         this.time = time;
-        this.value = value;
+        this.wirkungsgrad = wirkungsgrad;
+        this.chargingCycles = chargingCycles;
     }
 
     public long getTime() {
@@ -29,12 +27,20 @@ class Entry{
         this.time = time;
     }
 
-    public int getValue() {
-        return value;
+    public int getWirkungsgrad() {
+        return wirkungsgrad;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setWirkungsgrad(int wirkungsgrad) {
+        this.wirkungsgrad = wirkungsgrad;
+    }
+
+    public int getChargingCycles() {
+        return chargingCycles;
+    }
+
+    public void setChargingCycles(int chargingCycles) {
+        this.chargingCycles = chargingCycles;
     }
 }
 
@@ -55,29 +61,46 @@ public class Calculator {
         //Check whether Wirkungsgrad matches
         //Create history function
         var historyOfWirkungsgrad = new Entry[history.size()+2];
-        historyOfWirkungsgrad[0] = new Entry(0, 100);
+        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
         for(int i = 1; i < historyOfWirkungsgrad.length-1; i++){
-            historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad());
+            historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
         }
-        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0);
+        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0, Integer.MAX_VALUE);
+        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, customer.getMinWirkungsgrad(), customer.getErwLebensdauer())
+                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, customer.getMinWirkungsgrad(), customer.getChargingCycles());
+    }
 
+    private static boolean kapazitaetOk(Customer customer, List<Knowledge> history){
+        //Check whether Wirkungsgrad matches
+        //Create history function
+        var historyOfWirkungsgrad = new Entry[history.size()+2];
+        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
+        for(int i = 1; i < historyOfWirkungsgrad.length-1; i++){
+            historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
+        }
+        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0, Integer.MAX_VALUE);
+        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, customer.getMinKapazitaet(), customer.getErwLebensdauer())
+                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, customer.getMinKapazitaet(), customer.getChargingCycles());
+    }
+
+    private static boolean approveValuesForBorderValueByTime(Entry[] historyOfWirkungsgrad, int borderValue, long erwLebensdauer){
         //Soften hard jumps by doing one smoothing iteration
-        var softendHistoryOfWirkungsgrad = new Entry[history.size()+4];
-        historyOfWirkungsgrad[0] = new Entry(0, 100);
-        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0);
+        var softendHistoryOfWirkungsgrad = new Entry[historyOfWirkungsgrad.length+4];
+        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
+        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(historyOfWirkungsgrad[historyOfWirkungsgrad.length-1].getTime()+1, 0, 0);
         for(int i = 1; i < historyOfWirkungsgrad.length; i++){
-            softendHistoryOfWirkungsgrad[i] = new Entry((historyOfWirkungsgrad[i-1].getTime() + historyOfWirkungsgrad[i].getTime()) / 2, (historyOfWirkungsgrad[i-1].getValue() + historyOfWirkungsgrad[i].getValue()) / 2);
+            softendHistoryOfWirkungsgrad[i] = new Entry((historyOfWirkungsgrad[i-1].getTime() + historyOfWirkungsgrad[i].getTime()) / 2, (historyOfWirkungsgrad[i-1].getWirkungsgrad() + historyOfWirkungsgrad[i].getWirkungsgrad()) / 2, Integer.MAX_VALUE);
         }
 
         //Start comparing values with necessary wirkungsgrad
         Entry lastEntry = null;
         for(var v : softendHistoryOfWirkungsgrad){
-            if(v.getTime() <= v.getTime()+customer.getErwLebensdauer()){
+            if(v.getTime() <= v.getTime()+erwLebensdauer){
                 /*
                 Wenn der Zeitpunkt der Messung vor der erwLebensdauer Ende liegt
                     => ÜBERPRÜFEN
                 */
-                if(v.getValue() < customer.getMinWirkungsgrad()){
+                if(v.getWirkungsgrad() < borderValue){
                     /*
                     Der Wirkungsgrad reicht nicht aus
                      */
@@ -86,16 +109,75 @@ public class Calculator {
             }else{
                 /*
                 Wenn der Zeitpunkt danach liegt und trotzdem über dem noetigen Wirkungsgrad, muss es trotzdem passen.
-                Sons überprüfen wir mithile einer Geraden zwischen den zwei Datenpnukten
+                Sonst überprüfen wir mithile einer Geraden zwischen den zwei Datenpnukten
                 */
-                if(v.getValue() < customer.getMinWirkungsgrad()){
+                if(v.getWirkungsgrad() < borderValue){
                     /*
                     Der Wirkungsgrad reicht nicht aus
                      => Überprüfen anhand von Gerade zwischen den zwei Datenpunkten
                      */
-                    var m = (v.getValue()-lastEntry.getValue())/(v.getTime()-lastEntry.getTime());
+                    var m = (v.getWirkungsgrad()-lastEntry.getWirkungsgrad())/(v.getTime()-lastEntry.getTime());
+                    if(borderValue > m*lastEntry.getWirkungsgrad()){
+                        /*
+                        Der Wirkungsgrad auf der Geraden reicht nicht aus
+                         */
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            /*
+            Muss nur gespeichert werden, wenn Der Punkt darüber lag, sonst eh egal
+             */
+            lastEntry = v;
+        }
+        return true;
+    }
 
+    private static boolean approveValuesForBorderValueByChargingCycles(Entry[] historyOfWirkungsgrad, int borderValue, long chargingCycles){
+        //Soften hard jumps by doing one smoothing iteration
+        var softendHistoryOfWirkungsgrad = new Entry[historyOfWirkungsgrad.length+4];
+        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
+        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(historyOfWirkungsgrad[historyOfWirkungsgrad.length-1].getTime()+1, 0, Integer.MAX_VALUE);
+        for(int i = 1; i < historyOfWirkungsgrad.length; i++){
+            softendHistoryOfWirkungsgrad[i] = new Entry(
+                    (historyOfWirkungsgrad[i-1].getTime() + historyOfWirkungsgrad[i].getTime()) / 2,
+                    (historyOfWirkungsgrad[i-1].getWirkungsgrad() + historyOfWirkungsgrad[i].getWirkungsgrad()) / 2,
+                    (historyOfWirkungsgrad[i-1].getChargingCycles() + historyOfWirkungsgrad[i].getChargingCycles()) / 2);
+        }
+
+        //Start comparing values with necessary wirkungsgrad
+        Entry lastEntry = null;
+        for(var v : softendHistoryOfWirkungsgrad){
+            if(v.getChargingCycles() < v.getChargingCycles()+chargingCycles){
+                /*
+                Wenn Menge an Zyklen vor der erwLebensdauer Ende liegt
+                    => ÜBERPRÜFEN
+                */
+                if(v.getWirkungsgrad() < borderValue){
+                    /*
+                    Der Wirkungsgrad reicht nicht aus
+                     */
                     return false;
+                }
+            }else{
+                /*
+                Wenn der Zeitpunkt danach liegt und trotzdem über dem noetigen Wirkungsgrad, muss es trotzdem passen.
+                Sonst überprüfen wir mithile einer Geraden zwischen den zwei Datenpnukten
+                */
+                if(v.getWirkungsgrad() < borderValue){
+                    /*
+                    Der Wirkungsgrad reicht nicht aus
+                     => Überprüfen anhand von Gerade zwischen den zwei Datenpunkten
+                     */
+                    var m = (v.getWirkungsgrad()-lastEntry.getWirkungsgrad())/(v.getChargingCycles()-lastEntry.getChargingCycles());
+                    if(borderValue > m*lastEntry.getWirkungsgrad()){
+                        /*
+                        Der Wirkungsgrad auf der Geraden reicht nicht aus
+                         */
+                        return false;
+                    }
+                    return true;
                 }
             }
             /*

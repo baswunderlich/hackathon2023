@@ -21,7 +21,7 @@
         function myFunction() {
             var input_battery_id = document.getElementById("input").value
             console.log(input_battery_id)
-            var url = "127.0.0.1:8080/answer?pass=" + input_battery_id
+            var url = "answer?pass=" + input_battery_id
 
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", url, true);

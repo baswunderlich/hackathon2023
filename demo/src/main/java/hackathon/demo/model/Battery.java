@@ -3,17 +3,19 @@ package hackathon.demo.model;
 import java.util.Date;
 
 public class Battery {
+    String id;
     String hersteller;
     int wirkungsgrad;
     int kapazitaet; //mAh
-    int aufladungenMinuten;
-    Date herstellungsdatum;
+    int chargingCycles;
+    long herstellungsdatum;
 
-    public Battery(String hersteller, int wirkungsgrad, int kapazitaet, int aufladungenMinuten, Date herstellungsdatum) {
+    public Battery(String id, String hersteller, int wirkungsgrad, int kapazitaet, int chargingCycles, long herstellungsdatum) {
+        this.id = id;
         this.hersteller = hersteller;
         this.wirkungsgrad = wirkungsgrad;
         this.kapazitaet = kapazitaet;
-        this.aufladungenMinuten = aufladungenMinuten;
+        this.chargingCycles = chargingCycles;
         this.herstellungsdatum = herstellungsdatum;
     }
 
@@ -41,19 +43,19 @@ public class Battery {
         this.kapazitaet = kapazitaet;
     }
 
-    public int getAufladungenMinuten() {
-        return aufladungenMinuten;
+    public int getChargingCycles() {
+        return chargingCycles;
     }
 
-    public void setAufladungenMinuten(int aufladungenMinuten) {
-        this.aufladungenMinuten = aufladungenMinuten;
+    public void setChargingCycles(int aufladungenMinuten) {
+        this.chargingCycles = aufladungenMinuten;
     }
 
-    public Date getHerstellungsdatum() {
+    public long getHerstellungsdatum() {
         return herstellungsdatum;
     }
 
-    public void setHerstellungsdatum(Date herstellungsdatum) {
+    public void setHerstellungsdatum(long herstellungsdatum) {
         this.herstellungsdatum = herstellungsdatum;
     }
 }

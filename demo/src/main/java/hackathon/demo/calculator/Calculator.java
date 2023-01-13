@@ -3,6 +3,9 @@ package hackathon.demo.calculator;
 import hackathon.demo.model.*;
 
 import java.io.FileNotFoundException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 class Entry{
@@ -52,7 +55,7 @@ public class Calculator {
         var viableCustomers = new LinkedList<Customer>();
 
         for(var c : customers){
-            if(wirkungsgradOk(c, history) && kapazitaetOk(c, history)){
+            if(wirkungsgradOk(c, battery, history) && kapazitaetOk(c, battery, history)){
                 viableCustomers.add(c);
             }
         }
@@ -62,7 +65,7 @@ public class Calculator {
         return new Answer(viableCustomers.getFirst().getName(), viableCustomers.getFirst().getPreisProBatterie());
     }
 
-    private static boolean wirkungsgradOk(Customer customer, List<Knowledge> history){
+    private static boolean wirkungsgradOk(Customer customer, Battery b, List<Knowledge> history){
         //Check whether Wirkungsgrad matches
         //Create history function
         var historyOfWirkungsgrad = new Entry[history.size()+2];
@@ -71,11 +74,11 @@ public class Calculator {
             historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
         }
         historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0, Integer.MAX_VALUE);
-        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, customer.getMinWirkungsgrad(), customer.getErwLebensdauer())
-                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, customer.getMinWirkungsgrad(), customer.getChargingCycles());
+        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, b, customer.getMinWirkungsgrad(), customer.getErwLebensdauer())
+                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, b, customer.getMinWirkungsgrad(), customer.getChargingCycles());
     }
 
-    private static boolean kapazitaetOk(Customer customer, List<Knowledge> history){
+    private static boolean kapazitaetOk(Customer customer, Battery b, List<Knowledge> history){
         //Check whether Wirkungsgrad matches
         //Create history function
         var historyOfWirkungsgrad = new Entry[history.size()+2];
@@ -84,11 +87,11 @@ public class Calculator {
             historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
         }
         historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0, Integer.MAX_VALUE);
-        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, customer.getMinKapazitaet(), customer.getErwLebensdauer())
-                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, customer.getMinKapazitaet(), customer.getChargingCycles());
+        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, b, customer.getMinKapazitaet(), customer.getErwLebensdauer())
+                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, b, customer.getMinKapazitaet(), customer.getChargingCycles());
     }
 
-    private static boolean approveValuesForBorderValueByTime(Entry[] historyOfWirkungsgrad, int borderValue, long erwLebensdauer){
+    private static boolean approveValuesForBorderValueByTime(Entry[] historyOfWirkungsgrad, Battery b, int borderValue, long erwLebensdauer){
         //Soften hard jumps by doing one smoothing iteration
         var softendHistoryOfWirkungsgrad = new Entry[historyOfWirkungsgrad.length+4];
         historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
@@ -100,6 +103,12 @@ public class Calculator {
         //Start comparing values with necessary wirkungsgrad
         Entry lastEntry = null;
         for(var v : softendHistoryOfWirkungsgrad){
+            if(v.getTime()*1000 < LocalDateTime.now().getSecond()){
+            /*
+            We dont need to look at data before the actual current situation
+             */
+                continue;
+            }
             if(v.getTime() <= v.getTime()+erwLebensdauer){
                 /*
                 Wenn der Zeitpunkt der Messung vor der erwLebensdauer Ende liegt
@@ -139,7 +148,7 @@ public class Calculator {
         return true;
     }
 
-    private static boolean approveValuesForBorderValueByChargingCycles(Entry[] historyOfWirkungsgrad, int borderValue, long chargingCycles){
+    private static boolean approveValuesForBorderValueByChargingCycles(Entry[] historyOfWirkungsgrad, Battery b, int borderValue, long chargingCycles){
         //Soften hard jumps by doing one smoothing iteration
         var softendHistoryOfWirkungsgrad = new Entry[historyOfWirkungsgrad.length+4];
         historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
@@ -154,9 +163,15 @@ public class Calculator {
         //Start comparing values with necessary wirkungsgrad
         Entry lastEntry = null;
         for(var v : softendHistoryOfWirkungsgrad){
+            if(v.getChargingCycles() < b.getChargingCycles()){
+            /*
+            We dont need to look at data before the actual current situation
+             */
+                continue;
+            }
             if(v.getChargingCycles() < v.getChargingCycles()+chargingCycles){
                 /*
-                Wenn Menge an Zyklen vor der erwLebensdauer Ende liegt
+                Wenn Menge an Zyklen vor der erwZyklen Ende liegt
                     => ÜBERPRÜFEN
                 */
                 if(v.getWirkungsgrad() < borderValue){
@@ -195,7 +210,7 @@ public class Calculator {
 
     public static Battery getBattery(String pass) throws FileNotFoundException {
         //TODO
-        return new Battery("test", 50, 7000, 2313, new Date());
+        return new Battery(pass, "test", 50, 7000, 2313, new Date());
     }
 
     public static List<Customer> getCustomers() {

@@ -1,64 +1,64 @@
 [
     {
         "unternehmen": "VELITY",
-        "Batteriepreis": 540,
-        "erw_Lebensdauer": 4,
+        "batteriepreis": 540,
+        "erwLebensdauer": 4,
         "wirkungsgrad": "34%",
         "kapazitaet": 10000
     },
     {
         "unternehmen": "PERMADYNE",
-        "Batteriepreis": 984,
-        "erw_Lebensdauer": 2,
+        "batteriepreis": 984,
+        "erwLebensdauer": 2,
         "wirkungsgrad": "68%",
         "kapazitaet": 6000
     },
     {
         "unternehmen": "OVERPLEX",
-        "Batteriepreis": 1025,
-        "erw_Lebensdauer": 4,
+        "batteriepreis": 1025,
+        "erwLebensdauer": 4,
         "wirkungsgrad": "65%",
         "kapazitaet": 5000
     },
     {
         "unternehmen": "VENDBLEND",
-        "Batteriepreis": 1327,
-        "erw_Lebensdauer": 2,
+        "batteriepreis": 1327,
+        "erwLebensdauer": 2,
         "wirkungsgrad": "63%",
         "kapazitaet": 2500
     },
     {
         "unternehmen": "ENERSOL",
-        "Batteriepreis": 652,
-        "erw_Lebensdauer": 5,
+        "batteriepreis": 652,
+        "erwLebensdauer": 5,
         "wirkungsgrad": "30%",
         "kapazitaet": 4000
     },
     {
         "unternehmen": "ZENTIME",
-        "Batteriepreis": 719,
-        "erw_Lebensdauer": 4,
+        "batteriepreis": 719,
+        "erwLebensdauer": 4,
         "wirkungsgrad": "34%",
         "kapazitaet": 2000
     },
     {
         "unternehmen": "VALREDA",
-        "Batteriepreis": 655,
-        "erw_Lebensdauer": 2,
+        "batteriepreis": 655,
+        "erwLebensdauer": 2,
         "wirkungsgrad": "57%",
         "kapazitaet": 4800
     },
     {
         "unternehmen": "ISODRIVE",
-        "Batteriepreis": 1315,
-        "erw_Lebensdauer": 3,
+        "batteriepreis": 1315,
+        "erwLebensdauer": 3,
         "wirkungsgrad": "29%",
         "kapazitaet": 5900
     },
     {
         "unternehmen": "MARTGO",
-        "Batteriepreis": 1307,
-        "erw_Lebensdauer": 2,
+        "batteriepreis": 1307,
+        "erwLebensdauer": 2,
         "wirkungsgrad": "40%",
         "kapazitaet": 2500
     }

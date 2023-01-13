@@ -28,11 +28,23 @@
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
             var res = "800"
+
+            var hersteller = "PROFLEX"
+            var wirkungsgrad = "29"
+            var capacity = "10000"
+            var chargeCycles = "5862"
+            var yearInUnix = "31536000"
+            var herstellDatum = "2019-12-15"
             var str = "wir können deine Batterie nicht verwenden"
             if(res != -1){
                 str = "wir kaufen deine Batterie für " + res
             }
             document.getElementById('response').innerHTML = str
+            document.getElementById('hersteller').innerHTML = hersteller
+            document.getElementById('wirkungsgrad').innerHTML = wirkungsgrad
+            document.getElementById('Kapazität').innerHTML = capacity
+            document.getElementById('chargeCycles').innerHTML = chargeCycles
+            document.getElementById('herstellDatum').innerHTML = herstellDatum
         }
     </script>
 </head>
@@ -44,7 +56,7 @@
             <input id="input" type="text" placeholder="BatteryPassID">
             <button id="button" style="margin-top: 10px;" onclick="myFunction()">Anfragen</button>
         </div>
-        <div class="grid">
+        <div class="grid" style="display: none;">
             <p id="response"></p>
         </div>
 

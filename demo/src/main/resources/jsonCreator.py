@@ -65,6 +65,6 @@ for i in range(len(batteryProducer)):
         "chargingCycles" : str(random.randint(2000, 17000))
     }
     # Serializing json
-    knowledgeJson += json.dumps(battery, indent=4)+",\n"
+    knowledgeJson += json.dumps(knowledge, indent=4)+",\n"
 # Store the json
 createJson(knowledgeJson, "knowledge")

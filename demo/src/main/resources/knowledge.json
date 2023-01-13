@@ -1,34 +1,34 @@
 [
 {
-    "id": "21",
-    "hersteller": "PHORMULA",
-    "wirkungsgrad": "38",
-    "capacity": 13000,
-    "chargingCycles": "4080",
-    "herstellDatum": "1600892056"
+    "hersteller": "PROFLEX",
+    "wirkungsgrad": "37",
+    "lebensdauerNachMessung": "-1",
+    "lebensdauerGesamt": "409968000",
+    "lebensdauerBisMessung": "252288000",
+    "chargingCycles": "15450"
 },
 {
-    "id": "21",
-    "hersteller": "PHORMULA",
-    "wirkungsgrad": "38",
-    "capacity": 13000,
-    "chargingCycles": "4080",
-    "herstellDatum": "1600892056"
+    "hersteller": "ZILPHUR",
+    "wirkungsgrad": "47",
+    "lebensdauerNachMessung": "-1",
+    "lebensdauerGesamt": "473040000",
+    "lebensdauerBisMessung": "315360000",
+    "chargingCycles": "12515"
 },
 {
-    "id": "21",
-    "hersteller": "PHORMULA",
-    "wirkungsgrad": "38",
-    "capacity": 13000,
-    "chargingCycles": "4080",
-    "herstellDatum": "1600892056"
+    "hersteller": "AQUAFIRE",
+    "wirkungsgrad": "76",
+    "lebensdauerNachMessung": "-1",
+    "lebensdauerGesamt": "315360000",
+    "lebensdauerBisMessung": "346896000",
+    "chargingCycles": "8558"
 },
 {
-    "id": "21",
     "hersteller": "PHORMULA",
-    "wirkungsgrad": "38",
-    "capacity": 13000,
-    "chargingCycles": "4080",
-    "herstellDatum": "1600892056"
+    "wirkungsgrad": "28",
+    "lebensdauerNachMessung": "-1",
+    "lebensdauerGesamt": "346896000",
+    "lebensdauerBisMessung": "220752000",
+    "chargingCycles": "9437"
 }
 ]

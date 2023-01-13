@@ -210,7 +210,7 @@ public class Calculator {
 
     public static Battery getBattery(String pass) throws FileNotFoundException {
         //TODO
-        return new Battery(pass, "test", 50, 7000, 2313, new Date());
+        return new Battery(pass, "test", 50, 7000, 2313, new Date().getTime());
     }
 
     public static List<Customer> getCustomers() {

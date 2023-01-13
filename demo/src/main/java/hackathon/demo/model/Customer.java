@@ -3,6 +3,7 @@ package hackathon.demo.model;
 public class Customer {
     String name;
     int minWirkungsgrad;
+    int minLebensdauer;
     int preisProBatterie;
 
     public Customer(String name, int minWirkungsgrad, int preis){

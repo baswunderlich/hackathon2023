@@ -55,6 +55,9 @@ public class Calculator {
         var viableCustomers = new LinkedList<Customer>();
 
         for(var c : customers){
+            System.out.println("_____________________\n+" +
+                    "Prüfung ob Batterie von " + battery.getHersteller() +
+                    "\nein Match für " + c.getName());
             if(wirkungsgradOk(c, battery, history) && kapazitaetOk(c, battery, history)){
                 viableCustomers.add(c);
             }
@@ -62,7 +65,10 @@ public class Calculator {
 
         Collections.sort(viableCustomers);
 
-        return new Answer(viableCustomers.getFirst().getName(), viableCustomers.getFirst().getPreisProBatterie());
+        /*
+        times 0.9 to make money
+         */
+        return new Answer(viableCustomers.getFirst().getName(), viableCustomers.getFirst().getPreisProBatterie()*0.9);
     }
 
     private static boolean wirkungsgradOk(Customer customer, Battery b, List<Knowledge> history){
@@ -74,30 +80,38 @@ public class Calculator {
             historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
         }
         historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0, Integer.MAX_VALUE);
-        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, b, customer.getMinWirkungsgrad(), customer.getErwLebensdauer())
-                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, b, customer.getMinWirkungsgrad(), customer.getChargingCycles());
+        System.out.println("Prüfe WirkungsgradAnforderung:");
+        var byTimeOk = Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, b, customer.getMinWirkungsgrad(), customer.getErwLebensdauer());
+        var byCyclesOk = Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, b, customer.getMinWirkungsgrad(), customer.getChargingCycles());
+        System.out.println("byTimeOk: " + byTimeOk);
+        System.out.println("byCyclesOk: " + byCyclesOk);
+        return byTimeOk && byCyclesOk;
     }
 
     private static boolean kapazitaetOk(Customer customer, Battery b, List<Knowledge> history){
         //Check whether Wirkungsgrad matches
         //Create history function
-        var historyOfWirkungsgrad = new Entry[history.size()+2];
-        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
-        for(int i = 1; i < historyOfWirkungsgrad.length-1; i++){
-            historyOfWirkungsgrad[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
+        var historyOfKapazitaet = new Entry[history.size()+2];
+        historyOfKapazitaet[0] = new Entry(0, 100, 0);
+        for(int i = 1; i < historyOfKapazitaet.length-1; i++){
+            historyOfKapazitaet[i] = new Entry(history.get(i).getTime(), history.get(i).getWirkungsgrad(), history.get(i).getAnzahlGeladen());
         }
-        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(history.get(historyOfWirkungsgrad.length-1).getTime()+1, 0, Integer.MAX_VALUE);
-        return Calculator.approveValuesForBorderValueByTime(historyOfWirkungsgrad, b, customer.getMinKapazitaet(), customer.getErwLebensdauer())
-                && Calculator.approveValuesForBorderValueByChargingCycles(historyOfWirkungsgrad, b, customer.getMinKapazitaet(), customer.getChargingCycles());
+        historyOfKapazitaet[historyOfKapazitaet.length-1] = new Entry(history.get(historyOfKapazitaet.length-1).getTime()+1, 0, Integer.MAX_VALUE);
+        System.out.println("Prüfe Kapazitaetanforderung:");
+        var byTimeOk = Calculator.approveValuesForBorderValueByTime(historyOfKapazitaet, b, customer.getMinKapazitaet(), customer.getErwLebensdauer());
+        var byCyclesOk = Calculator.approveValuesForBorderValueByChargingCycles(historyOfKapazitaet, b, customer.getMinKapazitaet(), customer.getChargingCycles());
+        System.out.println("byTimeOk: " + byTimeOk);
+        System.out.println("byCyclesOk: " + byCyclesOk);
+        return byTimeOk && byCyclesOk;
     }
 
-    private static boolean approveValuesForBorderValueByTime(Entry[] historyOfWirkungsgrad, Battery b, int borderValue, long erwLebensdauer){
+    private static boolean approveValuesForBorderValueByTime(Entry[] historyOfValues, Battery b, int borderValue, long erwLebensdauer){
         //Soften hard jumps by doing one smoothing iteration
-        var softendHistoryOfWirkungsgrad = new Entry[historyOfWirkungsgrad.length+4];
-        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
-        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(historyOfWirkungsgrad[historyOfWirkungsgrad.length-1].getTime()+1, 0, 0);
-        for(int i = 1; i < historyOfWirkungsgrad.length; i++){
-            softendHistoryOfWirkungsgrad[i] = new Entry((historyOfWirkungsgrad[i-1].getTime() + historyOfWirkungsgrad[i].getTime()) / 2, (historyOfWirkungsgrad[i-1].getWirkungsgrad() + historyOfWirkungsgrad[i].getWirkungsgrad()) / 2, Integer.MAX_VALUE);
+        var softendHistoryOfWirkungsgrad = new Entry[historyOfValues.length+4];
+        historyOfValues[0] = new Entry(0, 100, 0);
+        historyOfValues[historyOfValues.length-1] = new Entry(historyOfValues[historyOfValues.length-1].getTime()+1, 0, 0);
+        for(int i = 1; i < historyOfValues.length; i++){
+            softendHistoryOfWirkungsgrad[i] = new Entry((historyOfValues[i-1].getTime() + historyOfValues[i].getTime()) / 2, (historyOfValues[i-1].getWirkungsgrad() + historyOfValues[i].getWirkungsgrad()) / 2, Integer.MAX_VALUE);
         }
 
         //Start comparing values with necessary wirkungsgrad
@@ -148,16 +162,16 @@ public class Calculator {
         return true;
     }
 
-    private static boolean approveValuesForBorderValueByChargingCycles(Entry[] historyOfWirkungsgrad, Battery b, int borderValue, long chargingCycles){
+    private static boolean approveValuesForBorderValueByChargingCycles(Entry[] historyOfValues, Battery b, int borderValue, long chargingCycles){
         //Soften hard jumps by doing one smoothing iteration
-        var softendHistoryOfWirkungsgrad = new Entry[historyOfWirkungsgrad.length+4];
-        historyOfWirkungsgrad[0] = new Entry(0, 100, 0);
-        historyOfWirkungsgrad[historyOfWirkungsgrad.length-1] = new Entry(historyOfWirkungsgrad[historyOfWirkungsgrad.length-1].getTime()+1, 0, Integer.MAX_VALUE);
-        for(int i = 1; i < historyOfWirkungsgrad.length; i++){
+        var softendHistoryOfWirkungsgrad = new Entry[historyOfValues.length+4];
+        historyOfValues[0] = new Entry(0, 100, 0);
+        historyOfValues[historyOfValues.length-1] = new Entry(historyOfValues[historyOfValues.length-1].getTime()+1, 0, Integer.MAX_VALUE);
+        for(int i = 1; i < historyOfValues.length; i++){
             softendHistoryOfWirkungsgrad[i] = new Entry(
-                    (historyOfWirkungsgrad[i-1].getTime() + historyOfWirkungsgrad[i].getTime()) / 2,
-                    (historyOfWirkungsgrad[i-1].getWirkungsgrad() + historyOfWirkungsgrad[i].getWirkungsgrad()) / 2,
-                    (historyOfWirkungsgrad[i-1].getChargingCycles() + historyOfWirkungsgrad[i].getChargingCycles()) / 2);
+                    (historyOfValues[i-1].getTime() + historyOfValues[i].getTime()) / 2,
+                    (historyOfValues[i-1].getWirkungsgrad() + historyOfValues[i].getWirkungsgrad()) / 2,
+                    (historyOfValues[i-1].getChargingCycles() + historyOfValues[i].getChargingCycles()) / 2);
         }
 
         //Start comparing values with necessary wirkungsgrad

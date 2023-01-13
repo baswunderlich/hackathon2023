@@ -2,9 +2,9 @@ package hackathon.demo.model;
 
 public class Answer {
     public String kunde;
-    public int preis;
+    public double preis;
 
-    public Answer(String kunde, int preis){
+    public Answer(String kunde, double preis){
         this.kunde = kunde;
         this.preis = preis;
     }

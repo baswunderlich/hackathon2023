@@ -1,251 +1,251 @@
 [
   {
-    "guid": "4013400c-636b-4e7d-aeca-3a6ec7e2181f",
-    "hersteller": "EARTHMARK",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 65,
-    "aufladungen_count": 3367,
+    "guid": "fb048d2b-d267-4e64-b47c-d66d8cecf343",
+    "hersteller": "PANZENT",
+    "herstellDatum": "2015-10-04",
+    "wirkungsgrad": 73,
+    "aufladungen_count": 2841,
     "aufladungen": [
       {
-        "timestamp": "2022-01-01",
-        "dauer": 231
+        "timestamp": "2022-08-02",
+        "dauer": 108
       },
       {
-        "timestamp": "2022-11-08",
-        "dauer": 84
+        "timestamp": "2022-07-18",
+        "dauer": 79
       },
       {
-        "timestamp": "2022-07-14",
-        "dauer": 191
+        "timestamp": "2022-08-24",
+        "dauer": 232
       },
       {
-        "timestamp": "2022-05-12",
-        "dauer": 158
+        "timestamp": "2022-01-09",
+        "dauer": 113
       }
     ]
   },
   {
-    "guid": "a208a0b1-57d2-4122-b9ac-0af6bde4f3ff",
-    "hersteller": "MICROLUXE",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 37,
-    "aufladungen_count": 1016,
+    "guid": "720cd8c1-b512-449a-84da-6ab339914423",
+    "hersteller": "PROFLEX",
+    "herstellDatum": "2020-11-19",
+    "wirkungsgrad": 70,
+    "aufladungen_count": 1978,
     "aufladungen": [
       {
-        "timestamp": "2022-10-26",
-        "dauer": 211
+        "timestamp": "2022-02-03",
+        "dauer": 160
       },
       {
-        "timestamp": "2022-09-28",
-        "dauer": 31
+        "timestamp": "2022-03-18",
+        "dauer": 140
       },
       {
-        "timestamp": "2022-03-30",
-        "dauer": 182
+        "timestamp": "2022-07-09",
+        "dauer": 234
       },
       {
-        "timestamp": "2022-05-25",
-        "dauer": 169
+        "timestamp": "2022-10-12",
+        "dauer": 126
       }
     ]
   },
   {
-    "guid": "0a689723-298d-4eea-9446-4db8f0758cbc",
-    "hersteller": "INFOTRIPS",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 46,
-    "aufladungen_count": 1962,
+    "guid": "0f2520de-39f5-4992-8174-cb5d0434b582",
+    "hersteller": "ZILPHUR",
+    "herstellDatum": "2020-03-06",
+    "wirkungsgrad": 82,
+    "aufladungen_count": 3527,
     "aufladungen": [
       {
-        "timestamp": "2022-11-02",
-        "dauer": 93
+        "timestamp": "2022-08-19",
+        "dauer": 120
       },
       {
-        "timestamp": "2022-02-28",
-        "dauer": 150
+        "timestamp": "2022-06-19",
+        "dauer": 72
       },
       {
-        "timestamp": "2022-10-30",
-        "dauer": 168
+        "timestamp": "2022-07-17",
+        "dauer": 155
       },
       {
-        "timestamp": "2022-06-09",
-        "dauer": 89
+        "timestamp": "2023-01-04",
+        "dauer": 37
       }
     ]
   },
   {
-    "guid": "60f03e56-f2cf-45aa-9edc-a8f5dde9a8f1",
-    "hersteller": "JOVIOLD",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 39,
-    "aufladungen_count": 1776,
+    "guid": "8b7a8b0b-4af4-4ce2-82a7-5e86fac836a3",
+    "hersteller": "AQUAFIRE",
+    "herstellDatum": "2022-09-10",
+    "wirkungsgrad": 44,
+    "aufladungen_count": 2712,
     "aufladungen": [
       {
-        "timestamp": "2022-08-12",
-        "dauer": 152
+        "timestamp": "2022-08-20",
+        "dauer": 107
       },
       {
-        "timestamp": "2022-07-05",
-        "dauer": 41
+        "timestamp": "2022-04-27",
+        "dauer": 105
       },
       {
-        "timestamp": "2022-02-08",
-        "dauer": 60
+        "timestamp": "2022-12-29",
+        "dauer": 230
       },
       {
-        "timestamp": "2022-11-16",
+        "timestamp": "2022-06-03",
         "dauer": 229
       }
     ]
   },
   {
-    "guid": "d9d8a1ef-373e-4ac6-a092-bbf8e4747932",
-    "hersteller": "COMVEYER",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 67,
-    "aufladungen_count": 3245,
+    "guid": "7066c9c2-2f80-422f-81ad-1c0ac4f82479",
+    "hersteller": "PHORMULA",
+    "herstellDatum": "2020-04-21",
+    "wirkungsgrad": 35,
+    "aufladungen_count": 2476,
     "aufladungen": [
       {
-        "timestamp": "2022-07-16",
-        "dauer": 73
+        "timestamp": "2022-09-25",
+        "dauer": 65
       },
       {
-        "timestamp": "2022-04-30",
-        "dauer": 95
+        "timestamp": "2022-02-19",
+        "dauer": 208
       },
       {
-        "timestamp": "2022-04-01",
-        "dauer": 52
+        "timestamp": "2022-10-23",
+        "dauer": 141
       },
       {
-        "timestamp": "2022-04-26",
-        "dauer": 89
+        "timestamp": "2022-09-11",
+        "dauer": 167
       }
     ]
   },
   {
-    "guid": "581f88a3-6d3a-4646-882f-97ee50e2361c",
-    "hersteller": "HINWAY",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 43,
-    "aufladungen_count": 1953,
+    "guid": "b8b49f9f-1502-4d08-8182-9139a67cf010",
+    "hersteller": "ANIXANG",
+    "herstellDatum": "2018-06-26",
+    "wirkungsgrad": 54,
+    "aufladungen_count": 3239,
     "aufladungen": [
       {
-        "timestamp": "2022-04-25",
+        "timestamp": "2022-10-27",
+        "dauer": 190
+      },
+      {
+        "timestamp": "2022-12-16",
+        "dauer": 150
+      },
+      {
+        "timestamp": "2022-05-10",
+        "dauer": 143
+      },
+      {
+        "timestamp": "2022-01-03",
+        "dauer": 200
+      }
+    ]
+  },
+  {
+    "guid": "f6178229-7d26-49a8-a423-5a81e4d1a27c",
+    "hersteller": "KYAGORO",
+    "herstellDatum": "2019-11-22",
+    "wirkungsgrad": 34,
+    "aufladungen_count": 2633,
+    "aufladungen": [
+      {
+        "timestamp": "2022-05-25",
         "dauer": 164
       },
       {
-        "timestamp": "2022-12-09",
-        "dauer": 192
+        "timestamp": "2022-03-31",
+        "dauer": 143
       },
       {
-        "timestamp": "2022-04-10",
-        "dauer": 235
+        "timestamp": "2022-02-23",
+        "dauer": 33
       },
       {
-        "timestamp": "2022-02-24",
-        "dauer": 207
+        "timestamp": "2022-01-20",
+        "dauer": 193
       }
     ]
   },
   {
-    "guid": "d5a2ea41-592e-4210-8ae5-ea27a2326d27",
-    "hersteller": "ORBIFLEX",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 52,
-    "aufladungen_count": 2370,
+    "guid": "20ed1c22-e0c0-4f1c-8483-1cdab95fcabc",
+    "hersteller": "VENOFLEX",
+    "herstellDatum": "2015-08-16",
+    "wirkungsgrad": 32,
+    "aufladungen_count": 2088,
     "aufladungen": [
       {
-        "timestamp": "2022-01-14",
-        "dauer": 228
+        "timestamp": "2022-08-18",
+        "dauer": 115
       },
       {
-        "timestamp": "2022-08-02",
-        "dauer": 73
+        "timestamp": "2022-09-29",
+        "dauer": 221
       },
       {
-        "timestamp": "2022-06-25",
-        "dauer": 48
+        "timestamp": "2022-03-24",
+        "dauer": 224
       },
       {
-        "timestamp": "2022-01-31",
-        "dauer": 78
+        "timestamp": "2022-09-06",
+        "dauer": 42
       }
     ]
   },
   {
-    "guid": "93a50e36-e4bf-4234-a7d5-7631805415f3",
-    "hersteller": "NORALI",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 23,
-    "aufladungen_count": 1280,
+    "guid": "ddaec679-b7ea-4dbc-8f35-a8f9fe653a33",
+    "hersteller": "EARTHMARK",
+    "herstellDatum": "2021-12-28",
+    "wirkungsgrad": 26,
+    "aufladungen_count": 3850,
     "aufladungen": [
       {
-        "timestamp": "2022-01-31",
-        "dauer": 107
+        "timestamp": "2022-11-11",
+        "dauer": 57
       },
       {
-        "timestamp": "2023-01-09",
+        "timestamp": "2022-03-27",
+        "dauer": 156
+      },
+      {
+        "timestamp": "2022-03-03",
+        "dauer": 92
+      },
+      {
+        "timestamp": "2022-10-03",
+        "dauer": 123
+      }
+    ]
+  },
+  {
+    "guid": "1bc61ec0-3273-4d27-8646-62f51fc9a39d",
+    "hersteller": "DANJA",
+    "herstellDatum": "2017-06-20",
+    "wirkungsgrad": 61,
+    "aufladungen_count": 3715,
+    "aufladungen": [
+      {
+        "timestamp": "2022-06-29",
         "dauer": 69
       },
       {
-        "timestamp": "2022-08-21",
-        "dauer": 210
+        "timestamp": "2022-03-25",
+        "dauer": 225
       },
       {
-        "timestamp": "2022-12-19",
-        "dauer": 51
-      }
-    ]
-  },
-  {
-    "guid": "b9a1078d-2994-4475-a256-26ae150b6db7",
-    "hersteller": "QUARMONY",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 76,
-    "aufladungen_count": 3555,
-    "aufladungen": [
-      {
-        "timestamp": "2022-02-23",
-        "dauer": 151
+        "timestamp": "2022-11-14",
+        "dauer": 65
       },
       {
-        "timestamp": "2022-09-22",
-        "dauer": 231
-      },
-      {
-        "timestamp": "2022-03-13",
-        "dauer": 74
-      },
-      {
-        "timestamp": "2022-08-10",
-        "dauer": 190
-      }
-    ]
-  },
-  {
-    "guid": "f459500b-504f-46ff-ada5-dff662628391",
-    "hersteller": "MULTIFLEX",
-    "herstellDatum": "<SyntaxError: missing ) after argument list>",
-    "wirkungsgrad": 24,
-    "aufladungen_count": 3984,
-    "aufladungen": [
-      {
-        "timestamp": "2022-08-16",
-        "dauer": 168
-      },
-      {
-        "timestamp": "2022-07-23",
-        "dauer": 236
-      },
-      {
-        "timestamp": "2022-07-08",
-        "dauer": 239
-      },
-      {
-        "timestamp": "2022-04-16",
-        "dauer": 123
+        "timestamp": "2022-03-04",
+        "dauer": 101
       }
     ]
   }

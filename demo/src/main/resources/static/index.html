@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="jquery-3.6.2.js"></script>
+
     <title>Battery Broker</title>
 
     <style>
@@ -13,18 +16,41 @@
         }
     </style>
 
-    <script>
+    <script type="text/javascript">
 
+        function myFunction() {
+            var input_battery_id = document.getElementById("input").value
+            console.log(input_battery_id)
+            var url = "127.0.0.1:8080/answer?pass=" + input_battery_id
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url, true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send();
+        }
+
+        $(function () {
+            $('#button').on('click', function () {
+                $('#response').css("display", "block")
+                var text = $('#text');
+                text.val(text.val() + ' after clicking');
+            });
+        });
     </script>
 </head>
 
 
 <body>
-    <div class="grid">
-        <p>Bitte gib die BatteryPassID ein.</p>
-        <input type="text" value="BatteryPassID">
-        <button>Anfragen</button>
-    </div>
+    <!-- <div class="container-fluid"> -->
+        <div class="grid">
+            <p>Bitte gib die BatteryPassID ein.</p>
+            <input id="input" type="text" placeholder="BatteryPassID">
+            <button id="button" style="margin-top: 10px;" onclick="myFunction()">Anfragen</button>
+        </div>
+        <div class="grid">
+            <p id="response" style="display: none;">wir kaufen deine Batterie für 800€</p>
+        </div>
+    <!-- </div> -->
 
 </body>
 

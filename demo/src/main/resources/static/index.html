@@ -29,20 +29,21 @@
             xhttp.send();
             var res = "800"
 
-            var hersteller = "PROFLEX"
-            var wirkungsgrad = "29"
-            var capacity = "10000"
-            var chargeCycles = "5862"
+            var hersteller = "Hersteller: " + "PROFLEX"
+            var wirkungsgrad = "Wirkungsgrad: " + "29"
+            var capacity = "Kapazität: " + "10000"
+            var chargeCycles = "Batterie Aufladungen: " + "5862"
             var yearInUnix = "31536000"
-            var herstellDatum = "2019-12-15"
+            var herstellDatum = "Herstelldatum: " + "2019-12-15"
             var str = "wir können deine Batterie nicht verwenden"
-            if(res != -1){
+            if (res != -1) {
                 str = "wir kaufen deine Batterie für " + res
             }
+
             document.getElementById('response').innerHTML = str
             document.getElementById('hersteller').innerHTML = hersteller
             document.getElementById('wirkungsgrad').innerHTML = wirkungsgrad
-            document.getElementById('Kapazität').innerHTML = capacity
+            document.getElementById('kapazität').innerHTML = capacity
             document.getElementById('chargeCycles').innerHTML = chargeCycles
             document.getElementById('herstellDatum').innerHTML = herstellDatum
         }
@@ -51,14 +52,22 @@
 
 
 <body>
-        <div class="grid">
-            <p>Bitte gib die BatteryPassID ein.</p>
-            <input id="input" type="text" placeholder="BatteryPassID">
-            <button id="button" style="margin-top: 10px;" onclick="myFunction()">Anfragen</button>
+    <div class="grid" style="margin-top: 15%;">
+        <p>Bitte gib die BatteryPassID ein.</p>
+        <input id="input" type="text" placeholder="BatteryPassID">
+        <button id="button" style="margin-top: 10px;" onclick="myFunction()">Anfragen</button>
+    </div>
+    <div class="grid">
+        <p id="response"></p>
+
+        <div id="batteryPass" class="container" style="margin-top: 50px; margin-left: 43.5vw;">
+            <p id="hersteller"></p>
+            <p id="wirkungsgrad"></p>
+            <p id="kapazität"></p>
+            <p id="chargeCycles"></p>
+            <p id="herstellDatum"></p>
         </div>
-        <div class="grid" style="display: none;">
-            <p id="response"></p>
-        </div>
+    </div>
 
 </body>
 

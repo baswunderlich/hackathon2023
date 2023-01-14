@@ -16,7 +16,7 @@ public class Controller {
         try {
             return Calculator.getAnswerForBatteryPass(pass);
         } catch (FileNotFoundException e) {
-            return new Answer("Keinen solchen Pass gefunden", -1);
+            return new Answer("Keinen solchen Pass gefunden", -1, null);
         }
     }
 }

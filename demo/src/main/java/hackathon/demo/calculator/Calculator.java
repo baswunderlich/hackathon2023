@@ -40,7 +40,7 @@ public class Calculator {
             System.out.println("Kein Kunde gefunden");
             return null;
         }
-        return new Answer(viableCustomers.getFirst().getName(), viableCustomers.getFirst().getPreisProBatterie()*0.9);
+        return new Answer(viableCustomers.getFirst().getName(), viableCustomers.getFirst().getPreisProBatterie()*0.9, battery);
     }
 
     public static boolean wirkungsgradOk(Customer c, Battery b, List<Knowledge> history){

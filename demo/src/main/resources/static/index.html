@@ -35,6 +35,12 @@
             xhttp.open("GET", url, true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
+            const userAction = async () => {
+            const data = await fetch("answer");
+            console.log(data)
+            const myJson = await data.json(); //extract JSON from the http response
+            // do something with myJson
+        }
             if (input_battery_id == 12345) {
                 var res = "800"
 
@@ -111,7 +117,7 @@
     </div>
     <div class="grid">
         <p id="response" style="font-size: 18px;"></p>
-        
+
         <p id="DatenText" style="font-weight: bold; font-size: 20px;"></p>
         <table>
             <tr>

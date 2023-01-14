@@ -87,7 +87,7 @@
             document.getElementById('wirkungsgrad').innerHTML = wirkungsgrad
             document.getElementById('kapazität').innerHTML = capacity
             document.getElementById('chargeCycles').innerHTML = chargeCycles
-            document.getElementById('herstellDatum').innerHTML = herstellDatum
+            document.getElementById('herstellDatum').innerHTML = herstellDatum.getDate() + "." + herstellDatum.getMonth() + "." + herstellDatum.getFullYear()
         }
     </script>
 </head>

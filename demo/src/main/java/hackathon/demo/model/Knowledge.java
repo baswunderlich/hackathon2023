@@ -1,6 +1,6 @@
 package hackathon.demo.model;
 
-public class Knowledge {
+public class Knowledge implements Comparable<Knowledge>{
     String hersteller;
     int wirkungsgrad;
     long lebensdauerNachMessung; //-1 wenn immernoch existiert
@@ -31,7 +31,7 @@ public class Knowledge {
         return anzahlGeladen;
     }
 
-    public long getTime(){
+    public long getAgeAtMessung(){
         return lebensdauerBisMessung;
     }
 
@@ -77,5 +77,12 @@ public class Knowledge {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    @Override
+    public int compareTo(Knowledge o) {
+        if(this.getAgeAtMessung() > o.getAgeAtMessung()) return 1;
+        if(this.getAgeAtMessung() == o.getAgeAtMessung()) return 0;
+        return -1;
     }
 }

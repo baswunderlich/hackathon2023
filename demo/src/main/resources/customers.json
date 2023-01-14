@@ -10,65 +10,9 @@
 {
     "customerName": "PERMADYNE",
     "minCapacity": 10000,
-    "minWirkungsgrad": 37,
-    "erwarteteLebensdauer": 126144000,
+    "minWirkungsgrad": 80,
+    "erwarteteLebensdauer": 147680000,
     "chargingCycles": 2243,
     "preisProBatterie": 5554
-},
-{
-    "customerName": "OVERPLEX",
-    "minCapacity": 4000,
-    "minWirkungsgrad": 39,
-    "erwarteteLebensdauer": 157680000,
-    "chargingCycles": 5279,
-    "preisProBatterie": 2907
-},
-{
-    "customerName": "VENDBLEND",
-    "minCapacity": 20000,
-    "minWirkungsgrad": 26,
-    "erwarteteLebensdauer": 94608000,
-    "chargingCycles": 4796,
-    "preisProBatterie": 9614
-},
-{
-    "customerName": "ENERSOL",
-    "minCapacity": 7000,
-    "minWirkungsgrad": 65,
-    "erwarteteLebensdauer": 126144000,
-    "chargingCycles": 3223,
-    "preisProBatterie": 4977
-},
-{
-    "customerName": "ZENTIME",
-    "minCapacity": 4500,
-    "minWirkungsgrad": 30,
-    "erwarteteLebensdauer": 63072000,
-    "chargingCycles": 4779,
-    "preisProBatterie": 1029
-},
-{
-    "customerName": "VALREDA",
-    "minCapacity": 12000,
-    "minWirkungsgrad": 46,
-    "erwarteteLebensdauer": 63072000,
-    "chargingCycles": 7365,
-    "preisProBatterie": 2263
-},
-{
-    "customerName": "ISODRIVE",
-    "minCapacity": 8000,
-    "minWirkungsgrad": 28,
-    "erwarteteLebensdauer": 189216000,
-    "chargingCycles": 2472,
-    "preisProBatterie": 7346
-},
-{
-    "customerName": "MARTGO",
-    "minCapacity": 9000,
-    "minWirkungsgrad": 22,
-    "erwarteteLebensdauer": 189216000,
-    "chargingCycles": 5955,
-    "preisProBatterie": 2972
 }
 ]

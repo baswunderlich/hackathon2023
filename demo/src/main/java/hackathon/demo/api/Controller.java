@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 @RestController
 public class Controller {
     @GetMapping("answer")
+    @CrossOrigin(origins = "*")
     public Answer getAnswerForBatteryPass(String pass){
         try {
             return Calculator.getAnswerForBatteryPass(pass);

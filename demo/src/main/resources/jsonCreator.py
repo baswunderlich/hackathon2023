@@ -28,11 +28,11 @@ customerJson = ""
 for i in range(len(customerNames)):
     customer = {
         "customerName": customerNames[i],
-        "minCapacity": str(customerReqCapacity[i]),
-        "minWirkungsgrad": str(random.randint(20, 65)),
-        "erwarteteLebensdauer": str(yearInUnixTime * random.randint(2, 7)),
-        "chargingCycles": str(random.randint(2000, 8000)),
-        "preisProBatterie": str(random.randint(500, 10000))
+        "minCapacity": customerReqCapacity[i],
+        "minWirkungsgrad": random.randint(20, 65),
+        "erwarteteLebensdauer": yearInUnixTime * random.randint(2, 7),
+        "chargingCycles": random.randint(2000, 8000),
+        "preisProBatterie": random.randint(500, 10000)
     }
     # Serializing json
     customerJson += json.dumps(customer, indent=4)+",\n"
@@ -44,10 +44,10 @@ for i in range(len(batteryProducer)):
     battery = {
         "id": str(batteryID[i]),
         "hersteller": batteryProducer[i],
-        "wirkungsgrad": str(random.randint(20, 80)),
+        "wirkungsgrad": random.randint(20, 80),
         "capacity": producerCapacitys[i],
-        "chargingCycles" : str(random.randint(2000, 8000)),
-        "herstellDatum" : str(random.randint(year2018inUnix, year2021UnixTime))
+        "chargingCycles" : random.randint(2000, 8000),
+        "herstellDatum" : random.randint(year2018inUnix, year2021UnixTime)
     }
     # Serializing json
     batteryJson += json.dumps(battery, indent=4)+",\n"
@@ -58,11 +58,11 @@ knowledgeJson = ""
 for i in range(len(batteryProducer)):
     knowledge = {
         "hersteller": batteryProducer[i],
-        "wirkungsgrad": str(random.randint(20, 80)),
-        "lebensdauerNachMessung": str(-1),
-        "lebensdauerGesamt" : str(random.randint(8, 15) * yearInUnixTime),
-        "lebensdauerBisMessung" : str(random.randint(5, 12) * yearInUnixTime),
-        "chargingCycles" : str(random.randint(2000, 17000))
+        "wirkungsgrad": random.randint(20, 80),
+        "lebensdauerNachMessung": -1,
+        "lebensdauerGesamt" : random.randint(8, 15) * yearInUnixTime,
+        "lebensdauerBisMessung" : random.randint(5, 12) * yearInUnixTime,
+        "chargingCycles" : random.randint(2000, 17000)
     }
     # Serializing json
     knowledgeJson += json.dumps(knowledge, indent=4)+",\n"

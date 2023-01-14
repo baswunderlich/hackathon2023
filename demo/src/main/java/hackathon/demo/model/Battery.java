@@ -9,14 +9,17 @@ public class Battery {
     int kapazitaet; //mAh
     int chargingCycles;
     long herstellungsdatum;
+    int werkKapazitaet;
 
-    public Battery(String id, String hersteller, int wirkungsgrad, int kapazitaet, int chargingCycles, long herstellungsdatum) {
+
+    public Battery(String id, String hersteller, int wirkungsgrad, int kapazitaet, int chargingCycles, long herstellungsdatum, int werkKapazitaet) {
         this.id = id;
         this.hersteller = hersteller;
         this.wirkungsgrad = wirkungsgrad;
         this.kapazitaet = kapazitaet;
         this.chargingCycles = chargingCycles;
         this.herstellungsdatum = herstellungsdatum;
+        this.werkKapazitaet = werkKapazitaet;
     }
 
     public String getHersteller() {
@@ -57,5 +60,21 @@ public class Battery {
 
     public void setHerstellungsdatum(long herstellungsdatum) {
         this.herstellungsdatum = herstellungsdatum;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getWerkKapazitaet() {
+        return werkKapazitaet;
+    }
+
+    public void setWerkKapazitaet(int werkKapazitaet) {
+        this.werkKapazitaet = werkKapazitaet;
     }
 }

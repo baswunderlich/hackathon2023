@@ -2,33 +2,19 @@
 {
     "id": "12345",
     "hersteller": "PROFLEX",
-    "wirkungsgrad": "29",
+    "wirkungsgrad": 62,
     "capacity": 10000,
-    "chargingCycles": "5862",
-    "herstellDatum": "1576411592"
+    "werkCapacity": 15000,
+    "chargingCycles": 4762,
+    "herstellDatum": 1581845157
 },
 {
     "id": "42",
     "hersteller": "ZILPHUR",
-    "wirkungsgrad": "28",
+    "wirkungsgrad": 32,
     "capacity": 5000,
-    "chargingCycles": "2996",
-    "herstellDatum": "1600326959"
-},
-{
-    "id": "987",
-    "hersteller": "AQUAFIRE",
-    "wirkungsgrad": "51",
-    "capacity": 20000,
-    "chargingCycles": "4711",
-    "herstellDatum": "1535748634"
-},
-{
-    "id": "21",
-    "hersteller": "PHORMULA",
-    "wirkungsgrad": "38",
-    "capacity": 13000,
-    "chargingCycles": "4080",
-    "herstellDatum": "1600892056"
+    "werkCapacity": 12000,
+    "chargingCycles": 5642,
+    "herstellDatum": 1578026927
 }
 ]

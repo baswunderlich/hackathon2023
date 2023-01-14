@@ -77,4 +77,6 @@ public class Battery {
     public void setWerkKapazitaet(int werkKapazitaet) {
         this.werkKapazitaet = werkKapazitaet;
     }
+
+
 }

@@ -1,20 +1,38 @@
 [
 {
     "hersteller": "PROFLEX",
-    "wirkungsgrad": 52,
+    "wirkungsgrad": 90,
     "lebensdauerNachMessung": -1,
     "lebensdauerGesamt": 315360000,
-    "lebensdauerBisMessung": 137680000,
+    "lebensdauerBisMessung": 77680000,
     "chargingCycles": 14897,
     "capacity": 1000
 },
 {
     "hersteller": "PROFLEX",
-    "wirkungsgrad": 79,
+    "wirkungsgrad": 70,
+    "lebensdauerNachMessung": -1,
+    "lebensdauerGesamt": 315360000,
+    "lebensdauerBisMessung": 147680000,
+    "chargingCycles": 14897,
+    "capacity": 1000
+},
+{
+    "hersteller": "PROFLEX",
+    "wirkungsgrad": 60,
     "lebensdauerNachMessung": -1,
     "lebensdauerGesamt": 409968000,
     "lebensdauerBisMessung": 197680000,
     "chargingCycles": 3139,
     "capacity": 1300
+},
+{
+    "hersteller": "PROFLEX",
+    "wirkungsgrad": 40,
+    "lebensdauerNachMessung": -1,
+    "lebensdauerGesamt": 315360000,
+    "lebensdauerBisMessung": 237680000,
+    "chargingCycles": 14897,
+    "capacity": 1000
 }
 ]

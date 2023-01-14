@@ -31,31 +31,61 @@
             xhttp.open("GET", url, true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
-            var res = "800"
+            if (input_battery_id == 12345) {
+                var res = "800"
 
-            var hersteller = "PROFLEX"
-            var wirkungsgrad = "29"
-            var capacity = "10000"
-            var chargeCycles = "5862"
-            var yearInUnix = "31536000"
-            var herstellDatum = "2019-12-15"
-            var str = "wir können deine Batterie nicht verwenden"
-            if (res != -1) {
-                str = "wir kaufen deine Batterie für " + res
+                var hersteller = "PROFLEX"
+                var wirkungsgrad = "29"
+                var capacity = "10000"
+                var chargeCycles = "5862"
+                var yearInUnix = "31536000"
+                var herstellDatum = "2019-12-15"
+                var str = "wir können deine Batterie nicht verwenden"
+                if (res != -1) {
+                    str = "wir kaufen deine Batterie für " + res
+                }
+
+                document.getElementById('herstellerHeader').innerHTML = "Hersteller"
+                document.getElementById('wirkungsgradHeader').innerHTML = "Wirkungsgrad"
+                document.getElementById('kapazitätHeader').innerHTML = "Kapazität"
+                document.getElementById('chargeCyclesHeader').innerHTML = "Batterie Aufladungen"
+                document.getElementById('herstellDatumHeader').innerHTML = "Herstelldatum"
+
+                document.getElementById('response').innerHTML = str
+                document.getElementById('response').style.color = "green"
+                document.getElementById('hersteller').innerHTML = hersteller
+                document.getElementById('wirkungsgrad').innerHTML = wirkungsgrad
+                document.getElementById('kapazität').innerHTML = capacity
+                document.getElementById('chargeCycles').innerHTML = chargeCycles
+                document.getElementById('herstellDatum').innerHTML = herstellDatum
             }
+            if (input_battery_id == 42) {
+                var res = "-1"
+                var hersteller = "ZILPHUR"
+                var wirkungsgrad = "32"
+                var capacity = "5000"
+                var chargeCycles = "5642"
+                var yearInUnix = "31536000"
+                var herstellDatum = "2020-01-03"
+                var str = "wir können deine Batterie nicht verwenden"
+                if (res != -1) {
+                    str = "wir kaufen deine Batterie für " + res
+                }
 
-            document.getElementById('herstellerHeader').innerHTML = "Hersteller"
-            document.getElementById('wirkungsgradHeader').innerHTML = "Wirkungsgrad"
-            document.getElementById('kapazitätHeader').innerHTML = "Kapazität"
-            document.getElementById('chargeCyclesHeader').innerHTML = "Batterie Aufladungen"
-            document.getElementById('herstellDatumHeader').innerHTML = "Herstelldatum"
+                document.getElementById('herstellerHeader').innerHTML = "Hersteller"
+                document.getElementById('wirkungsgradHeader').innerHTML = "Wirkungsgrad"
+                document.getElementById('kapazitätHeader').innerHTML = "Kapazität"
+                document.getElementById('chargeCyclesHeader').innerHTML = "Batterie Aufladungen"
+                document.getElementById('herstellDatumHeader').innerHTML = "Herstelldatum"
 
-            document.getElementById('response').innerHTML = str
-            document.getElementById('hersteller').innerHTML = hersteller
-            document.getElementById('wirkungsgrad').innerHTML = wirkungsgrad
-            document.getElementById('kapazität').innerHTML = capacity
-            document.getElementById('chargeCycles').innerHTML = chargeCycles
-            document.getElementById('herstellDatum').innerHTML = herstellDatum
+                document.getElementById('response').innerHTML = str
+                document.getElementById('response').style.color = "red"
+                document.getElementById('hersteller').innerHTML = hersteller
+                document.getElementById('wirkungsgrad').innerHTML = wirkungsgrad
+                document.getElementById('kapazität').innerHTML = capacity
+                document.getElementById('chargeCycles').innerHTML = chargeCycles
+                document.getElementById('herstellDatum').innerHTML = herstellDatum
+            }
         }
     </script>
 </head>
@@ -63,12 +93,12 @@
 
 <body>
     <div class="grid" style="margin-top: 15%;">
-        <p>Bitte gib die BatteryPassID ein.</p>
+        <p style="font-size: 18px;">Bitte gib die BatteryPassID ein.</p>
         <input id="input" type="text" placeholder="BatteryPassID">
         <button id="button" style="margin-top: 10px;" onclick="myFunction()">Anfragen</button>
     </div>
     <div class="grid">
-        <p id="response"></p>
+        <p id="response" style="font-size: 18px;"></p>
 
         <table>
             <tr>

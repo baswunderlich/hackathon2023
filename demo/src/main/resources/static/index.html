@@ -49,6 +49,8 @@
                     str = "Wir kaufen deine Batterie für " + res + "€!"
                 }
 
+                document.getElementById('DatenText').innerHTML = "Deine Batterie Daten"
+
                 document.getElementById('herstellerHeader').innerHTML = "Hersteller"
                 document.getElementById('wirkungsgradHeader').innerHTML = "Wirkungsgrad"
                 document.getElementById('kapazitätHeader').innerHTML = "Kapazität"
@@ -76,7 +78,7 @@
                     str = "wir kaufen deine Batterie für " + res
                 }
 
-                document.getElementById('DatenText').innerHTML = "Deine Batterie Daten:"
+                document.getElementById('DatenText').innerHTML = "Deine Batterie Daten"
 
                 document.getElementById('herstellerHeader').innerHTML = "Hersteller"
                 document.getElementById('wirkungsgradHeader').innerHTML = "Wirkungsgrad"
@@ -110,7 +112,7 @@
     <div class="grid">
         <p id="response" style="font-size: 18px;"></p>
         
-        <p id="DatenText"></p>
+        <p id="DatenText" style="font-weight: bold; font-size: 20px;"></p>
         <table>
             <tr>
                 <th id="herstellerHeader"></th>

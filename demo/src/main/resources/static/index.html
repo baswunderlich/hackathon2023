@@ -36,7 +36,7 @@
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
             const userAction = async () => {
-            const data = await fetch("answer");
+            const data = await fetch("localhost/answer");
             console.log(data)
             const myJson = await data.json(); //extract JSON from the http response
             // do something with myJson

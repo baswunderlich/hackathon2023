@@ -10,6 +10,10 @@
     <title>Battery Broker</title>
 
     <style>
+        body {
+            font-family: 'Source Sans Pro'
+        }
+
         .grid {
             display: grid;
             place-items: center;
@@ -42,7 +46,7 @@
                 var herstellDatum = "2019-12-15"
                 var str = "wir können deine Batterie nicht verwenden"
                 if (res != -1) {
-                    str = "wir kaufen deine Batterie für " + res
+                    str = "Wir kaufen deine Batterie für " + res + "€!"
                 }
 
                 document.getElementById('herstellerHeader').innerHTML = "Hersteller"
@@ -59,7 +63,7 @@
                 document.getElementById('chargeCycles').innerHTML = chargeCycles
                 document.getElementById('herstellDatum').innerHTML = herstellDatum
             }
-            if (input_battery_id == 42) {
+            else if (input_battery_id == 23456) {
                 var res = "-1"
                 var hersteller = "ZILPHUR"
                 var wirkungsgrad = "32"
@@ -67,10 +71,12 @@
                 var chargeCycles = "5642"
                 var yearInUnix = "31536000"
                 var herstellDatum = "2020-01-03"
-                var str = "wir können deine Batterie nicht verwenden"
+                var str = "Wir können deine Batterie nicht verwenden."
                 if (res != -1) {
                     str = "wir kaufen deine Batterie für " + res
                 }
+
+                document.getElementById('DatenText').innerHTML = "Deine Batterie Daten:"
 
                 document.getElementById('herstellerHeader').innerHTML = "Hersteller"
                 document.getElementById('wirkungsgradHeader').innerHTML = "Wirkungsgrad"
@@ -86,6 +92,10 @@
                 document.getElementById('chargeCycles').innerHTML = chargeCycles
                 document.getElementById('herstellDatum').innerHTML = herstellDatum
             }
+            else {
+                str = "Ungültiger BatteriePass."
+                document.getElementById('response').innerHTML = str
+            }
         }
     </script>
 </head>
@@ -99,7 +109,8 @@
     </div>
     <div class="grid">
         <p id="response" style="font-size: 18px;"></p>
-
+        
+        <p id="DatenText"></p>
         <table>
             <tr>
                 <th id="herstellerHeader"></th>
